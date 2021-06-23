@@ -1,0 +1,38 @@
+.jumbotron {
+    background-image: url("/img/OIP.jfif");
+    color: azure;
+    margin: 0;
+}
+
+.bg-img {
+    opacity: .1;
+}
+
+h3 {
+    padding: 20px;
+}
+
+.site-footer {
+    background-color: lightsteelblue;
+    padding: 20px, 0;
+}
+
+.navbar {
+    background-color: lightsteelblue;
+    color: black;
+}
+
+.navbar-nav li a {
+    color: black;
+}
+
+.navbar-toggler-icon {
+}
+
+.card:hover {
+    opacity: .8;
+}
+
+.nav-item:hover, .navbar-toggler-icon:hover, .fa:hover {
+    opacity: .6;
+}
