@@ -63,7 +63,7 @@
 
                 <span class="navbar-text ml-auto">
                     <a role="button" data-toggle="modal" data-target="#loginModal">
-                        <i class="fa fa-sign-in">Login</i>
+                        <i class="fa fa-sign-in btn btn-light"> Login</i>
                     </a>
                 </span>
             </div>
@@ -79,11 +79,13 @@
                 </div>
                 <div class="modal-body">
                     <div class="container-fluid">
-                        <p>shopping cart stuff goes here</p>
+                        <span>shopping cart stuff goes here</span>
+                        <span id="remove">Remove &times;</span>
                     </div>
                     <button class="btn btn-primary">
                         Place Order Now
                     </button>
+                    <span id="total">running total goes here</span>
                 </div>
             </div>
         </div>
@@ -140,10 +142,43 @@
                     <div class="container-fluid">
                         <img class="card-img-top" src="img/OIP.jfif" alt="Sandwich" />
                         <p>Item description</p>
-                        <p>Price</p>
+                        <div class="form-group row">
+                            <label for="sizes" class="col-sm-6 col-form-label">Select a Size</label>
+                            <div class="col">
+                                <select class="form-control" id="size" name="size">
+                                    <option>Select...</option>
+                                    <option>Small</option>
+                                    <option>Medium +$x.xx</option>
+                                    <option>Large +$x.xx</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="someitemadd">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                some item add<i class="ml-4" id="itemprice">+ $x.xx</i>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="someitemadd">
+                            <label class="form-check-label" for="flexCheckChecked">
+                                some other item add<i class="ml-4" id="itemprice">+ $x.xx</i>
+                            </label>
+                        </div>
+                        <br />
+                        <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                            <label for="small-input" class="col-form-label-sm">Other instructions</label>
+                            <input type="text" id="small-input" class="form-control form-control-sm">
+                        </div>
+                        <p id="p1Price">Price</p>
+                        <button onclick="decrease()" id="decrease" class="btn btn-secondary">-</button>
+                        <span id="numberCount" class="col-4">1</span>
+                        <button onclick="increase()" id="increase" class="btn btn-secondary">+</button>
                         <button class="btn btn-primary">
                             Add to Cart
                         </button>
+                        <span class="ml-4">Total price $xx.xx</span>
                     </div>
                 </div>
             </div>
@@ -160,86 +195,99 @@
                     <div class="card-body">
                         <p>item description</p>
                         <p>Price</p>
-                        <p>Add to cart button goes here</p>
+                    </div>
                 </a>
             </div>
-        </div>
-        <div class="card col-12 col-sm">
-            <img class="card-img-top" src="img/OIP.jfif" alt="Sandwich" />
-            <h3 class="card-header bg-dark text-white">Some Product2</h3>
-            <div class="card-body">
-                <p>item description</p>
-                <p>Price</p>
-            </div>
-        </div><div class="card col-12 col-sm">
-            <img class="card-img-top" src="img/OIP.jfif" alt="Sandwich" />
-            <h3 class="card-header bg-dark text-white">Some Product2</h3>
-            <div class="card-body">
-                <p>item description</p>
-                <p>Price</p>
-            </div>
-        </div>
-        <h3 class="col-12" id="cat2">Cat 2</h3>
-        <div class="card col-12 col-sm-6">
-            <img class="card-img-top" src="img/OIP.jfif" alt="Sandwich" />
-            <h3 class="card-header bg-dark text-white">Some Product3</h3>
-            <div class="card-body">
-                <p>item description</p>
-                <p>Price</p>
-            </div>
-        </div>
-        <div class="card col-12 col-sm-6">
-            <img class="card-img-top" src="img/OIP.jfif" alt="Sandwich" />
-            <h3 class="card-header bg-dark text-white">Some Product4</h3>
-            <div class="card-body">
-                <p>item description</p>
-                <p>Price</p>
-            </div>
-        </div>
-        <h3 class="col-12" id="cat3">Cat 3</h3>
-        <div class="card col-12 col-sm-6">
-            <img class="card-img-top" src="img/OIP.jfif" alt="Sandwich" />
-            <h3 class="card-header bg-dark text-white">Some Product5</h3>
-            <div class="card-body">
-                <p>item description</p>
-                <p>Price</p>
-            </div>
-        </div>
-        <div class="card col-12 col-sm-6">
-            <img class="card-img-top" src="img/OIP.jfif" alt="Sandwich" />
-            <h3 class="card-header bg-dark text-white">Some Product6</h3>
-            <div class="card-body">
-                <p>item description</p>
-                <p>Price</p>
-            </div>
-        </div>
-        <h3 class="col-12" id="cat4">Cat 4</h3>
-        <div class="card col-12 col-sm-6">
-            <img class="card-img-top" src="img/OIP.jfif" alt="Sandwich" />
-            <h3 class="card-header bg-dark text-white">Some Product7</h3>
-            <div class="card-body">
-                <p>item description</p>
-                <p>Price</p>
-            </div>
-        </div>
-        <div class="card col-12 col-sm-6">
-            <img class="card-img-top" src="img/OIP.jfif" alt="Sandwich" />
-            <h3 class="card-header bg-dark text-white">Some Product8</h3>
-            <div class="card-body">
-                <p">
-                    item description</p>
+            <div class="card col-12 col-sm">
+                <img class="card-img-top" src="img/OIP.jfif" alt="Sandwich" />
+                <h3 class="card-header bg-dark text-white">Some Product2</h3>
+                <div class="card-body">
+                    <p>item description</p>
                     <p>Price</p>
+                </div>
+            </div><div class="card col-12 col-sm">
+                <img class="card-img-top" src="img/OIP.jfif" alt="Sandwich" />
+                <h3 class="card-header bg-dark text-white">Some Product2</h3>
+                <div class="card-body">
+                    <p>item description</p>
+                    <p>Price</p>
+                </div>
+            </div>
+        </div>
+        <div class="row row-content">
+            <h3 class="col-12" id="cat2">Cat 2</h3>
+            <div class="card col-12 col-sm-6">
+                <img class="card-img-top" src="img/OIP.jfif" alt="Sandwich" />
+                <h3 class="card-header bg-dark text-white">Some Product3</h3>
+                <div class="card-body">
+                    <p>item description</p>
+                    <p>Price</p>
+                </div>
+            </div>
+            <div class="card col-12 col-sm-6">
+                <img class="card-img-top" src="img/OIP.jfif" alt="Sandwich" />
+                <h3 class="card-header bg-dark text-white">Some Product4</h3>
+                <div class="card-body">
+                    <p>item description</p>
+                    <p>Price</p>
+                </div>
+            </div>
+        </div>
+        <div class="row row-content">
+            <h3 class="col-12" id="cat3">Cat 3</h3>
+            <div class="card col-12 col-sm-6">
+                <img class="card-img-top" src="img/OIP.jfif" alt="Sandwich" />
+                <h3 class="card-header bg-dark text-white">Some Product5</h3>
+                <div class="card-body">
+                    <p>item description</p>
+                    <p>Price</p>
+                </div>
+            </div>
+            <div class="card col-12 col-sm-6">
+                <img class="card-img-top" src="img/OIP.jfif" alt="Sandwich" />
+                <h3 class="card-header bg-dark text-white">Some Product6</h3>
+                <div class="card-body">
+                    <p>item description</p>
+                    <p>Price</p>
+                </div>
+            </div>
+        </div>
+        <div class="row row-content">
+            <h3 class="col-12" id="cat4">Cat 4</h3>
+            <div class="card col-12 col-sm-6">
+                <img class="card-img-top" src="img/OIP.jfif" alt="Sandwich" />
+                <h3 class="card-header bg-dark text-white">Some Product7</h3>
+                <div class="card-body">
+                    <p>item description</p>
+                    <p>Price</p>
+                </div>
+            </div>
+            <div class="card col-12 col-sm-6">
+                <img class="card-img-top" src="img/OIP.jfif" alt="Sandwich" />
+                <h3 class="card-header bg-dark text-white">Some Product8</h3>
+                <div class="card-body">
+                    <p>item description</p>
+                    <p>Price</p>
+                </div>
             </div>
         </div>
     </div>
 
-
-    </div>
-    </div>
 
     <footer class="site-footer">
         <div class="container">
             <div class="row">
+                <div class="col text-center">
+                    <h5>Hours</h5>
+                    <p>Sunday: xx:xx - xx:xx<br />
+                        Monday: xx:xx - xx:xx<br />
+                        Tuesday: xx:xx - xx:xx<br />
+                        Wednesday: xx:xx - xx:xx<br />
+                        Thursday: xx:xx - xx:xx<br />
+                        Friday: xx:xx - xx:xx<br />
+                        Saturday: xx:xx - xx:xx
+                    </p>
+                </div>
                 <div class="col-6 col-sm-5 text-center">
                     <h5>Social</h5>
                     <a class="btn btn-social-icon btn-instagram" href="http://instagram.com/"><i class="fa fa-instagram"></i></a>
@@ -248,8 +296,13 @@
                     <a class="btn btn-social-icon btn-youtube" href="http://youtube.com/"><i class="fa fa-youtube"></i></a>
                 </div>
                 <div class="col-sm-4 text-center">
-                    <a role="button" btn btn-link" href="phone number goes here"><i class="fa fa-phone"></i>phone number goes here</a><br>
-                    <a role="button" class="btn btn-link" href="emailaddressgoeshere"><i class="fa fa-envelope-o"></i>email address goes here</a>
+                    <h5>Address and Contact</h5>
+                    <p>Company Name<br />
+                        Street address<br />
+                        city state, zip
+                    </p>
+                    <a role="button" btn btn-link" href="phone number goes here"><i class="fa fa-phone"></i>(xxx)xxx-xxxx</a><br>
+                    <a role="button" class="btn btn-link" href="emailaddressgoeshere"><i class="fa fa-envelope-o"></i>something@somewhere.com</a>
                 </div>
             </div>
         </div>

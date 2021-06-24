@@ -4,21 +4,17 @@
     margin: 0;
 }
 
-.bg-img {
-    opacity: .1;
-}
-
 h3 {
     padding: 20px;
 }
 
 .site-footer {
-    background-color: lightsteelblue;
+    background-color: lightgray;
     padding: 20px, 0;
 }
 
 .navbar {
-    background-color: lightsteelblue;
+    background-color: lightgray;
     color: black;
 }
 
@@ -35,4 +31,12 @@ h3 {
 
 .nav-item:hover, .navbar-toggler-icon:hover, .fa:hover {
     opacity: .6;
+}
+
+#numberCount {
+    margin: 0px, 15px;
+}
+
+#total {
+    margin-left: 15px;
 }
